@@ -8,7 +8,7 @@
 
     <p class="mb-2"><strong>Categoría:</strong> {{ ucfirst($recipe->diet_category) }}</p>
     <p class="mb-2"><strong>Porciones base:</strong> {{ $recipe->base_servings }}</p>
-    <p class="mb-4"><strong>Descripción:</strong> {{ $recipe->description }}</p>
+    <p class="mb-4"><strong>Paso a paso:</strong> {{ $recipe->description }}</p>
 
     <h2 class="text-xl font-semibold text-pink-600 mb-2">Ingredientes</h2>
     <ul class="list-disc pl-5">
@@ -22,20 +22,20 @@
 
     <div class="mt-6 flex space-x-3">
         <a href="{{ route('recipes.edit', $recipe->id) }}" 
-           class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded">
+           class="bg-yellow-100 hover:bg-yellow-200 py-2 px-4 rounded-xl">
            Editar
         </a>
         <form action="{{ route('recipes.destroy', $recipe->id) }}" method="POST">
             @csrf
             @method('DELETE')
             <button type="submit" 
-                    class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+                    class="bg-red-200 hover:bg-red-300 py-2 px-4 rounded-xl"
                     onclick="return confirm('¿Estás segura de eliminar esta receta?')">
                 Eliminar
             </button>
         </form>
         <a href="{{ route('recipes.index') }}" 
-           class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">
+           class="bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded-xl">
            Volver
         </a>
     </div>

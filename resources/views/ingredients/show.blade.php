@@ -6,7 +6,7 @@
 <div class="bg-white rounded-xl shadow-md p-6">
     <h1 class="text-2xl font-bold text-pink-700 mb-4">{{ $ingredient->name }}</h1>
 
-    <p class="mb-2">
+    <p class="mb-2 uppercase">
         <strong>Tipo de ingrediente:</strong>
         {{ $ingredient->ingredient_type
             ? ucfirst(str_replace('_', ' ', $ingredient->ingredient_type))
@@ -15,7 +15,7 @@
 
     <div class="mt-6 flex space-x-3">
         <a href="{{ route('ingredients.edit', $ingredient->id) }}"
-           class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded">
+           class="bg-yellow-100 hover:bg-yellow-200 py-2 px-4 rounded-xl">
            Editar
         </a>
 
@@ -23,16 +23,14 @@
             @csrf
             @method('DELETE')
             <button type="submit"
-                    class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+                    class="bg-red-300 hover:bg-red-400 py-2 px-4 rounded-xl"
                     onclick="return confirm('¿Eliminar este ingrediente?')">
                 Eliminar
             </button>
         </form>
 
-        <a href="{{ route('ingredients.index') }}"
-           class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">
-           Volver
-        </a>
+            <a href="{{ route('ingredients.index') }}" class="px-4 py-2 rounded-xl bg-gray-200">Volver</a>
+
     </div>
 </div>
 @endsection
