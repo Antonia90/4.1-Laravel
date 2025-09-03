@@ -129,7 +129,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const list = document.getElementById('ingredients-list');
     const addBtn = document.getElementById('add-ingredient');
-    //let idx = @json(isset($row) ? $row : 1);
+    let idx = 1;
 
     addBtn.addEventListener('click', () => {
         const first = list.querySelector('.ingredient-row');
