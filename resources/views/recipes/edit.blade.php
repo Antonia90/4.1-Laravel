@@ -7,46 +7,48 @@
 @endphp
 
 <div class="bg-white rounded-2xl shadow p-6">
-    <h2 class="text-2xl font-semibold text-pink-700 mb-4">Editar Receta</h2>
+    <h2 class="text-2xl font-semibold text-pink-700 mb-4 uppercase">Editar</h2>
 
     <form action="{{ route('recipes.update', $recipe) }}" method="POST" class="space-y-4">
         @csrf
         @method('PUT')
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
                 <label class="block mb-1 font-semibold">Nombre</label>
                 <input type="text" name="name" value="{{ old('name', $recipe->name) }}"
-                       class="w-full rounded-xl border-gray-300" required>
+                       class="w-full rounded-xl border border-gray-300 p-2" required>
             </div>
 
             <div>
                 <label class="block mb-1 font-semibold">Categoría</label>
-                <select name="diet_category" class="w-full rounded-xl border-gray-300" required>
+                <select name="diet_category" class="w-2/3 rounded-xl border border-gray-300 p-2" required>
                     @foreach($categories as $cat)
                         <option value="{{ $cat }}" @selected(old('diet_category', $recipe->diet_category)===$cat)>{{ ucfirst($cat) }}</option>
                     @endforeach
                 </select>
             </div>
-
-            <div class="md:col-span-2">
-                <label class="block mb-1 font-semibold">Descripción (opcional)</label>
-                <textarea name="description" rows="3" class="w-full rounded-xl border-gray-300">{{ old('description', $recipe->description) }}</textarea>
-            </div>
-
-            <div>
+                        <div>
                 <label class="block mb-1 font-semibold">Porciones base</label>
                 <input type="number" min="1" name="base_servings" value="{{ old('base_servings', $recipe->base_servings) }}"
-                       class="w-full rounded-xl border-gray-300" required>
+                       class="w-20 rounded-xl border py-1 px-3 border-gray-300" required>
             </div>
+        
+
+            <div class="md:col-span-3">
+                <label class="block mb-1 font-semibold">Paso a paso</label>
+                <textarea name="description" rows="3" class="w-full rounded-xl border border-gray-300 p-2">{{ old('description', $recipe->description) }}</textarea>
+            </div>
+
+
         </div>
 
         {{-- Ingredientes dinámicos --}}
         <div class="mt-6">
             <div class="flex items-center justify-between mb-2">
-                <h3 class="text-xl font-semibold text-purple-700">Ingredientes</h3>
+                <h3 class="text-xl font-semibold text-pink-700 uppercase">Ingredientes</h3>
                 <button type="button" id="add-ingredient"
-                        class="bg-purple-300 hover:bg-purple-400 text-gray-900 px-3 py-1 rounded-xl shadow">
+                        class="bg-orange-200 hover:bg-orange-300 text-gray-900 px-3 py-1 rounded-xl shadow mb-5">
                     + Añadir
                 </button>
             </div>
@@ -115,8 +117,8 @@
         </div>
 
         <div class="flex gap-2 mt-4">
-            <a href="{{ route('recipes.index') }}" class="px-4 py-2 rounded-xl bg-gray-200">Cancelar</a>
-            <button type="submit" class="px-4 py-2 rounded-xl bg-pink-400 text-white hover:bg-pink-500">
+            <a href="{{ route('recipes.index') }}" class="px-4 py-2 rounded-xl bg-gray-200 hover:bg-gray-300">Cancelar</a>
+            <button type="submit" class="px-4 py-2 rounded-xl bg-red-200 hover:bg-red-300">
                 Actualizar
             </button>
         </div>
