@@ -1,8 +1,9 @@
-@extends('layouts.app')
-
-@section('title', 'Detalle del ingrediente')
-
-@section('content')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="text-xl font-bold leading-tight text-pink-800 uppercase">
+            {{ __('Detalle') }}
+        </h2>
+    </x-slot>
 <div class="bg-white rounded-xl shadow-md p-6">
     <h1 class="text-2xl font-bold text-pink-700 mb-4">{{ $ingredient->name }}</h1>
 
@@ -33,4 +34,4 @@
 
     </div>
 </div>
-@endsection
+</x-app-layout>

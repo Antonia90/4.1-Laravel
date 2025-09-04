@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 
 class Recipe extends Model
 {
     use HasFactory;
-    
-    protected $fillable = ['diet_category', 'name', 'description', 'base_servings'];
+
+    protected $fillable = [ 'user_id', 'diet_category', 'name', 'description', 'base_servings'];
 
     public function ingredients()
     {
@@ -18,7 +19,7 @@ class Recipe extends Model
             ->withPivot('unit', 'quantity_per_serving');
     }
 
-     /**
+    /**
      * Get the available diet categories.
      *
      * @return array
@@ -30,5 +31,9 @@ class Recipe extends Model
             'vegetarian',
             'omnivore',
         ];
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

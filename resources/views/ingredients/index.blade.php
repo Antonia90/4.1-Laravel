@@ -1,7 +1,9 @@
-@extends('layouts.app')
-@section('title', 'Ingredientes')
-
-@section('content')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="text-xl font-bold leading-tight text-pink-800 uppercase">
+            {{ __('Ingredientes') }}
+        </h2>
+    </x-slot>
 <div class="bg-white rounded-2xl shadow p-6">
     <div class="flex items-center justify-between mb-4">
         <h2 class="text-2xl font-semibold text-pink-700 uppercase">Ingredientes</h2>
@@ -57,4 +59,4 @@
     <p class="text-gray-600">No hay ingredientes registrados.</p>
     @endif
 </div>
-@endsection
+</x-app-layout>

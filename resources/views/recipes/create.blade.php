@@ -1,7 +1,9 @@
-@extends('layouts.app')
-@section('title', 'Nueva Receta')
-
-@section('content')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="text-xl font-bold leading-tight text-pink-800 uppercase">
+            {{ __('Agregar') }}
+        </h2>
+    </x-slot>
 @php
     $units = ['g','kg','ml','l','cup','tbsp','tsp','unit'];
 @endphp
@@ -123,4 +125,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 </script>
-@endsection
+</x-app-layout>

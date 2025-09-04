@@ -1,13 +1,25 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\IngredientController;
 
 Route::get('/', function () {
-    return view('layouts/app');
+    return view('welcome');
 });
 
-Route::resource('recipes', RecipeController::class);
-Route::resource('ingredients', IngredientController::class);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::resource('recipes', RecipeController::class)->middleware('auth');
+Route::resource('ingredients', IngredientController::class)->middleware('auth');
+
+require __DIR__.'/auth.php';

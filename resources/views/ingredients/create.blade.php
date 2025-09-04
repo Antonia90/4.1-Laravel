@@ -1,7 +1,9 @@
-@extends('layouts.app')
-@section('title', 'Nuevo Ingrediente')
-
-@section('content')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="text-xl font-bold leading-tight text-pink-800 uppercase">
+            {{ __('Agregar') }}
+        </h2>
+    </x-slot>
 <div class="bg-white rounded-2xl shadow p-6">
     <h2 class="text-2xl font-semibold text-pink-700 mb-4 uppercase">Nuevo Ingrediente</h2>
 
@@ -33,4 +35,5 @@
         </div>
     </form>
 </div>
-@endsection
+</x-app-layout>
+
