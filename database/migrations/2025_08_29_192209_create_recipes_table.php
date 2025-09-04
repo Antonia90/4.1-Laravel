@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->enum('diet_category', ['omnivore', 'vegetarian', 'vegan'])->default('omnivore');
             $table->string('name');
             $table->text('description')->nullable();

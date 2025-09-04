@@ -6,9 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\Recipe;
 use App\Models\Ingredient;
 use App\Models\RecipeIngredient;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class RecipeController extends Controller
 {
+    
+
+
     /**
      * Display a listing of the resource.
      */
@@ -24,6 +29,7 @@ class RecipeController extends Controller
 
         return view('recipes.index', compact('recipes'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -52,7 +58,14 @@ class RecipeController extends Controller
             'ingredients.*.quantity_per_serving' => 'required|numeric|min:0',
         ]);
 
-        $recipe = Recipe::create($validated);
+        $recipe = Auth::user()->recipes()->create([
+            'diet_category' => $validated['diet_category'],
+            'name' => $validated['name'],
+            'description' => $validated['description'] ?? null,
+            'base_servings' => $validated['base_servings'],
+        ]);
+
+
 
         foreach ($request->ingredients as $ingredientData) {
             $recipe->ingredients()->attach([
