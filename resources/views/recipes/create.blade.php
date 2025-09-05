@@ -9,54 +9,55 @@
 @endphp
 
 <div class="bg-white rounded-2xl shadow p-6">
-    <h2 class="text-2xl font-semibold text-pink-700 mb-4">Nueva Receta</h2>
+    <!-- <h2 class="text-2xl font-semibold text-pink-700 mb-4">Nueva Receta</h2> -->
 
     <form action="{{ route('recipes.store') }}" method="POST" class="space-y-4">
         @csrf
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
                 <label class="block mb-1 font-semibold">Nombre</label>
                 <input type="text" name="name" value="{{ old('name') }}"
-                       class="w-full rounded-xl border-gray-300" required>
+                       class="w-2/3 p-1 rounded-xl border border-gray-300" required>
             </div>
 
             <div>
                 <label class="block mb-1 font-semibold">Categoría</label>
-                <select name="diet_category" class="w-full rounded-xl border-gray-300" required>
+                <select name="diet_category" class="w-2/3 p-1 rounded-xl border border-gray-300" required>
                     @foreach($categories as $cat)
                         <option value="{{ $cat }}" @selected(old('diet_category')===$cat)>{{ ucfirst($cat) }}</option>
                     @endforeach
                 </select>
             </div>
-
-            <div class="md:col-span-2">
-                <label class="block mb-1 font-semibold">Descripción (opcional)</label>
-                <textarea name="description" rows="3" class="w-full rounded-xl border-gray-300">{{ old('description') }}</textarea>
-            </div>
-
-            <div>
+                        <div>
                 <label class="block mb-1 font-semibold">Porciones base</label>
                 <input type="number" min="1" name="base_servings" value="{{ old('base_servings', 1) }}"
-                       class="w-full rounded-xl border-gray-300" required>
+                       class="w-20 rounded-xl py-1 px-3 border border-gray-300" required>
             </div>
+
+            <div class="md:col-span-3">
+                <label class="block mb-1 font-semibold">Paso a paso</label>
+                <textarea name="description" rows="3" class="w-full rounded-xl border border-gray-300">{{ old('description') }}</textarea>
+            </div>
+
+
         </div>
 
         {{-- Ingredientes dinámicos --}}
         <div class="mt-6">
             <div class="flex items-center justify-between mb-2">
-                <h3 class="text-xl font-semibold text-purple-700">Ingredientes</h3>
+                <h3 class="text-xl font-semibold text-pink-700 uppercase">Ingredientes</h3>
                 <button type="button" id="add-ingredient"
-                        class="bg-purple-300 hover:bg-purple-400 text-gray-900 px-3 py-1 rounded-xl shadow">
+                        class="bg-orange-200 hover:bg-orange-300 text-gray-900 px-3 py-1 rounded-xl shadow">
                     + Añadir
                 </button>
             </div>
 
             <div id="ingredients-list" class="space-y-3">
                 {{-- fila inicial --}}
-                <div class="grid grid-cols-12 gap-2 items-center ingredient-row">
+                <div class="grid grid-cols-12 gap-2 items-center ingredient-row my-8">
                     <div class="col-span-6">
-                        <select name="ingredients[0][id]" class="w-full rounded-xl border-gray-300" required>
+                        <select name="ingredients[0][id]" class="w-2/3 p-1 rounded-xl border border-gray-300" required>
                             <option value="">-- Seleccionar ingrediente --</option>
                             @foreach($ingredients as $ing)
                                 <option value="{{ $ing->id }}">{{ $ing->name }}</option>
@@ -64,7 +65,7 @@
                         </select>
                     </div>
                     <div class="col-span-3">
-                        <select name="ingredients[0][unit]" class="w-full rounded-xl border-gray-300" required>
+                        <select name="ingredients[0][unit]" class="w-1/3 rounded-xl border-gray-300" required>
                             @foreach($units as $u)
                                 <option value="{{ $u }}">{{ $u }}</option>
                             @endforeach
@@ -73,7 +74,7 @@
                     <div class="col-span-2">
                         <input type="number" step="0.01" min="0" placeholder="Cant."
                                name="ingredients[0][quantity_per_serving]"
-                               class="w-full rounded-xl border-gray-300" required>
+                               class="w-2/3 p-1 rounded-xl border-gray-300" required>
                     </div>
                     <div class="col-span-1 text-right">
                         <button type="button" class="remove-row text-red-600 px-2 py-1 rounded-lg hover:bg-red-50">✕</button>
@@ -82,9 +83,9 @@
             </div>
         </div>
 
-        <div class="flex gap-2 mt-4">
-            <a href="{{ route('recipes.index') }}" class="px-4 py-2 rounded-xl bg-gray-200">Cancelar</a>
-            <button type="submit" class="px-4 py-2 rounded-xl bg-pink-400 text-white hover:bg-pink-500">
+        <div class="flex gap-2 mt-4 justify-end">
+            <a href="{{ route('recipes.index') }}" class="px-4 py-2 rounded-xl bg-gray-200 hover:bg-gray-300">Cancelar</a>
+            <button type="submit" class="px-4 py-2 rounded-xl bg-red-300 hover:bg-red-400">
                 Guardar
             </button>
         </div>

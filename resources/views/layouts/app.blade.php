@@ -33,7 +33,7 @@
 
         <!-- Page Heading -->
 
-        <nav class="bg-red-300 p-4 shadow-md">
+        <nav class="bg-red-300 p-4 shadow-md opacity-80">
             <div class="max-w-5xl mx-auto flex justify-center items-center">
                 @isset($header)
                 <header>

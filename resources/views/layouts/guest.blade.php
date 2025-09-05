@@ -37,10 +37,6 @@
                 </div>
             </header>
             @endisset
-            <div class="flex gap-4">
-                <a href="{{ route('ingredients.index') }}" class="text-pink-950 hover:text-white font-bold uppercase">Ingredientes</a>
-                <a href="{{ route('recipes.index') }}" class="text-pink-950 hover:text-white font-bold uppercase">Recetas</a>
-            </div>
         </div>
     </nav>
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100/80">
