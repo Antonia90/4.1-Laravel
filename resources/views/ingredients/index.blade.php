@@ -6,7 +6,7 @@
     </x-slot>
 <div class="bg-white rounded-2xl shadow p-6">
     <div class="flex items-center justify-between mb-4">
-        <h2 class="text-2xl font-semibold text-pink-700 uppercase">Ingredientes</h2>
+        <h2 class="text-2xl font-semibold text-pink-700 uppercase"></h2>
         <a href="{{ route('ingredients.create') }}"
             class="bg-orange-200 hover:bg-orange-300 text-gray-800 px-4 py-2 rounded-xl shadow">
             + Agregar
@@ -56,7 +56,7 @@
 
     <div class="mt-4">{{ $ingredients->links() }}</div>
     @else
-    <p class="text-gray-600">No hay ingredientes registrados.</p>
+    <p class="text-gray-600 text-center">No hay ingredientes registrados.</p>
     @endif
 </div>
 </x-app-layout>

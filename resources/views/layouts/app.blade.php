@@ -28,30 +28,23 @@
             alt="Fondo"
             class="w-full h-full object-cover">
     </div>
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-gray-100/70">
         @include('layouts.navigation')
 
         <!-- Page Heading -->
 
-            <nav class="bg-red-300 p-4 shadow-md">
-        <div class="max-w-5xl mx-auto flex justify-between items-center">
-            <!-- <a href="{{ url('/') }}"><img src="{{ Vite::asset('resources/images/icon.png') }}"
-                    alt="Recetario"
-                    class="h-10 w-10 rounded-full object-cover">
-            </a> -->
-                    @isset($header)
-        <header>
-            <div class="py-2 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
+        <nav class="bg-red-300 p-4 shadow-md opacity-80">
+            <div class="max-w-5xl mx-auto flex justify-center items-center">
+                @isset($header)
+                <header>
+                    <div class="py-2 px-4 sm:px-6 lg:px-8">
+                        {{ $header }}
+                    </div>
+                </header>
+                @endisset
+
             </div>
-        </header>
-        @endisset
-            <div class="flex gap-4">
-                <a href="{{ route('ingredients.index') }}" class="text-pink-950 hover:text-white font-bold uppercase">Ingredientes</a>
-                <a href="{{ route('recipes.index') }}" class="text-pink-950 hover:text-white font-bold uppercase">Recetas</a>
-            </div>
-        </div>
-    </nav>
+        </nav>
 
         <!-- Page Content -->
         <main class="max-w-5xl mx-auto p-6">
@@ -80,6 +73,9 @@
 
         </main>
     </div>
+    <footer class="bg-red-300 p-4 shadow-md">
+        <div class="max-w-5xl mx-auto flex justify-center items-center"> @2025. Todos los derechos reservados.</div>
+    </footer>
 </body>
 
 </html>

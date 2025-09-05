@@ -9,7 +9,7 @@
 @endphp
 
 <div class="bg-white rounded-2xl shadow p-6">
-    <h2 class="text-2xl font-semibold text-pink-700 mb-4 uppercase">Editar</h2>
+    <!-- <h2 class="text-2xl font-semibold text-pink-700 mb-4 uppercase">Editar</h2> -->
 
     <form action="{{ route('recipes.update', $recipe) }}" method="POST" class="space-y-4">
         @csrf
@@ -58,9 +58,9 @@
             <div id="ingredients-list" class="space-y-3">
                 @php $row = 0; @endphp
                 @foreach($recipe->ingredients as $ing)
-                    <div class="grid grid-cols-12 gap-2 items-center ingredient-row">
+                    <div class="grid grid-cols-12 gap-2 items-center ingredient-row my-8">
                         <div class="col-span-6">
-                            <select name="ingredients[{{ $row }}][id]" class="w-full rounded-xl border-gray-300" required>
+                            <select name="ingredients[{{ $row }}][id]" class="w-2/3 p-1 rounded-xl border-gray-300" required>
                                 <option value="">-- Seleccionar ingrediente --</option>
                                 @foreach($ingredients as $opt)
                                     <option value="{{ $opt->id }}" @selected($opt->id===$ing->id)>{{ $opt->name }}</option>
@@ -68,7 +68,7 @@
                             </select>
                         </div>
                         <div class="col-span-3">
-                            <select name="ingredients[{{ $row }}][unit]" class="w-full rounded-xl border-gray-300" required>
+                            <select name="ingredients[{{ $row }}][unit]" class="w-1/3 p-1 rounded-xl border-gray-300" required>
                                 @foreach($units as $u)
                                     <option value="{{ $u }}" @selected($u===$ing->pivot->unit)>{{ $u }}</option>
                                 @endforeach
@@ -77,7 +77,7 @@
                         <div class="col-span-2">
                             <input type="number" step="0.01" min="0" placeholder="Cant."
                                    name="ingredients[{{ $row }}][quantity_per_serving]"
-                                   class="w-full rounded-xl border-gray-300"
+                                   class="w-2/3 p-1 rounded-xl border-gray-300"
                                    value="{{ $ing->pivot->quantity_per_serving }}" required>
                         </div>
                         <div class="col-span-1 text-right">
@@ -91,7 +91,7 @@
                     {{-- si no tenía ingredientes, deja una fila en blanco --}}
                     <div class="grid grid-cols-12 gap-2 items-center ingredient-row">
                         <div class="col-span-6">
-                            <select name="ingredients[0][id]" class="w-full rounded-xl border-gray-300" required>
+                            <select name="ingredients[0][id]" class="w-2/3 p-1 rounded-xl border-gray-300" required>
                                 <option value="">-- Seleccionar ingrediente --</option>
                                 @foreach($ingredients as $opt)
                                     <option value="{{ $opt->id }}">{{ $opt->name }}</option>
@@ -99,7 +99,7 @@
                             </select>
                         </div>
                         <div class="col-span-3">
-                            <select name="ingredients[0][unit]" class="w-full rounded-xl border-gray-300" required>
+                            <select name="ingredients[0][unit]" class="w-1/3 p-1 rounded-xl border-gray-300" required>
                                 @foreach($units as $u)
                                     <option value="{{ $u }}">{{ $u }}</option>
                                 @endforeach
@@ -108,7 +108,7 @@
                         <div class="col-span-2">
                             <input type="number" step="0.01" min="0" placeholder="Cant."
                                    name="ingredients[0][quantity_per_serving]"
-                                   class="w-full rounded-xl border-gray-300" required>
+                                   class="w-2/3 p-1 rounded-xl border-gray-300" required>
                         </div>
                         <div class="col-span-1 text-right">
                             <button type="button" class="remove-row text-red-600 px-2 py-1 rounded-lg hover:bg-red-50">✕</button>
@@ -118,7 +118,7 @@
             </div>
         </div>
 
-        <div class="flex gap-2 mt-4">
+        <div class="flex gap-2 mt-4 justify-end">
             <a href="{{ route('recipes.index') }}" class="px-4 py-2 rounded-xl bg-gray-200 hover:bg-gray-300">Cancelar</a>
             <button type="submit" class="px-4 py-2 rounded-xl bg-red-200 hover:bg-red-300">
                 Actualizar
