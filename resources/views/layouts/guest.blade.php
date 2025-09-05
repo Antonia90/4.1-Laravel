@@ -18,7 +18,7 @@
 </head>
 
 <body class="relative font-sans text-gray-900 antialiased">
-        <!-- Fondo -->
+    <!-- Fondo -->
     <div class="absolute inset-0 bg-cover bg-center opacity-50 -z-10 overflow-hidden">
         <img src="{{ Vite::asset('resources/images/fondo.png') }}"
             alt="Fondo"
@@ -41,7 +41,9 @@
     </nav>
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100/80">
 
-        <div class="w-full px-6 py-4 shadow-md overflow-hidden sm:rounded-lg">
+        <!-- <div class="w-full px-6 py-4 shadow-md overflow-hidden sm:rounded-lg"> -->
+        <div class="w-full max-w-md bg-white/95 p-6 rounded-2xl shadow-lg">
+
             {{ $slot }}
         </div>
     </div>
