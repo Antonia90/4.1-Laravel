@@ -34,7 +34,7 @@
         <!-- Page Heading -->
 
         <nav class="bg-red-300 p-4 shadow-md">
-            <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <div class="max-w-5xl mx-auto flex justify-center items-center">
                 @isset($header)
                 <header>
                     <div class="py-2 px-4 sm:px-6 lg:px-8">
@@ -42,10 +42,7 @@
                     </div>
                 </header>
                 @endisset
-                <div class="flex gap-4">
-                    <a href="{{ route('ingredients.index') }}" class="text-pink-950 hover:text-white font-bold uppercase">Ingredientes</a>
-                    <a href="{{ route('recipes.index') }}" class="text-pink-950 hover:text-white font-bold uppercase">Recetas</a>
-                </div>
+
             </div>
         </nav>
 
