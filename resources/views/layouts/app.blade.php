@@ -76,6 +76,9 @@
 
         </main>
     </div>
+    <footer class="bg-red-300 p-4 shadow-md">
+        <div class="max-w-5xl mx-auto flex justify-center items-center"> @2025. Todos los derechos reservados.</div>
+    </footer>
 </body>
 
 </html>
