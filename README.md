@@ -1,4 +1,4 @@
-<p align="center"><img src="{{ Vite::asset('resources/images/fondo.png') }}" width="400" alt="Recipes Logo">Recipes</p>
+<p align="center">RECIPES</p>
 
 ## Recipe Management
 
