@@ -12,6 +12,47 @@
                 + Agregar
             </a>
         </div>
+        {{-- Formulario de filtros --}}
+        <form method="GET" action="{{ route('recipes.index') }}" class="w-full mb-4 flex flex-wrap gap-3 items-end">
+            <input type="text" name="search" value="{{ $filters['search'] ?? '' }}" placeholder="Buscar por nombre..."
+                class="border rounded px-3 py-2">
+
+            <select name="category" class="border rounded px-3 py-2">
+                <option value="">Categoría</option>
+                @foreach($categories as $c)
+                <option value="{{ $c }}" @selected(($filters['category'] ?? '' )===$c)>{{ ucfirst($c) }}</option>
+                @endforeach
+            </select>
+
+            <select name="ingredient_type" class="border rounded px-3 py-2">
+                <option value="">Tipo ingrediente</option>
+                @foreach($ingredientTypes as $t)
+                <option value="{{ $t }}" @selected(($filters['ingredient_type'] ?? '' )===$t)>{{ ucfirst($t) }}</option>
+                @endforeach
+            </select>
+
+            <select name="ingredient_id" class="border rounded px-3 py-2">
+                <option value="">Ingrediente</option>
+                @foreach($ingredients as $ing)
+                <option value="{{ $ing->id }}" @selected(($filters['ingredient_id'] ?? '' )==$ing->id)>{{ $ing->name }}</option>
+                @endforeach
+            </select>
+            <div class="ml-auto flex gap-2">
+                <button type="submit" class="rounded bg-red-400 text-white p-2">Filtrar</button>
+                <a href="{{ route('recipes.index') }}" class="rounded border p-2">Limpiar</a>
+            </div>
+
+            @auth
+            <label class="flex items-center gap-2 text-sm">
+                <input type="checkbox" name="mine" value="1" @checked(!empty($filters['mine']))>
+                Mis recetas
+            </label>
+            @endauth
+
+
+        </form>
+
+
 
         @if($recipes->count())
         <div class="overflow-x-auto">
