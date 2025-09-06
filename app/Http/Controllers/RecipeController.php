@@ -62,15 +62,9 @@ class RecipeController extends Controller
             'ingredients.*.quantity_per_serving' => 'required|numeric|min:0',
         ]);
 
-        // $recipe = auth()->user()->recipes()->create([
-        //     'diet_category' => $validated['diet_category'],
-        //     'name' => $validated['name'],
-        //     'description' => $validated['description'] ?? null,
-        //     'base_servings' => $validated['base_servings'],
-        // ]);
         
         $recipe = auth()->user()->recipes()->create($validated);
-        //$recipe = Recipe::create($validated);
+
 
 
 
