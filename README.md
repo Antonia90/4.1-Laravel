@@ -1,61 +1,95 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><img src="{{ Vite::asset('resources/images/fondo.png') }}" width="400" alt="Recipes Logo">Recipes</p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Recipe Management
 
-## About Laravel
+Recipe Manager is a Laravel application styled with Tailwind CSS. It allows users to create, edit, and delete recipes and ingredients, while also browsing recipes shared by others for cooking inspiration. The app includes filtering options by diet type (vegan, vegetarian, omnivore) and by ingredient category, making it easy to discover meals that fit your preferences.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Architecture
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This application follows a clean, multi-layered architecture to ensure a strong separation of concerns, making the codebase scalable, maintainable, and easy to test.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   **Controllers (`app/Http/Controllers`):** Act as the entry point for HTTP requests. Their sole responsibility is to orchestrate the flow of data, calling the appropriate services and returning an HTTP response. They contain no business logic.
+-   **Service Layer (`app/Services`):** This is the core of the application's business logic. 
+-   **Form Requests (`app/Http/Requests`):** Handle all validation and authorization logic for incoming requests. This keeps the controllers clean and focused, as the request is already validated and authorized before it even reaches the controller's method.
+-   **Policies (`app/Policies`):** Define the authorization rules for specific models. This provides a granular and centralized way to manage user permissions.
+-   **Eloquent Models (`app/Models`):** Represent the data layer, managing the interaction with the database.
 
-## Learning Laravel
+This structure ensures that each part of the application has a single, well-defined responsibility.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Technologies Used
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+-Backend: [Laravel 11, PHP 8.2]
+-Frontend: [Tailwind CSS, Alpine.js]
+-Database: [MySQL]
+-Development Tools: [Vite, Composer, NPM]
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Installation and Setup
 
-## Laravel Sponsors
+Follow these steps to get the project up and running on your local machine.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Prerequisites
 
-### Premium Partners
+- PHP >= 8.2
+- Composer
+- Node.js & NPM
+- A database server
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 1. Clone the Repository
 
-## Contributing
+```bash
+git clone https://github.com/Antonia90/4.1-Laravel
+cd 4.1-Laravel
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 2. Install Dependencies
 
-## Code of Conduct
+Install both PHP and JavaScript dependencies.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+composer install
+npm install
+```
 
-## Security Vulnerabilities
+### 3. Environment Configuration
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Create your local environment file and generate the application key.
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+Next, open the `.env` file and configure your database connection details (`DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`).
+
+### 4. Database Migration and Seeding
+
+Run the database migrations to create the tables and the seeders to populate the database with demo data (admin user, regular user).
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+### 5. Storage Link
+
+Create the symbolic link to make uploaded images publicly accessible.
+
+```bash
+php artisan storage:link
+```
+
+### 6. Build Assets and Run the Server
+
+Finally, build the frontend assets and start the local development server.
+
+```bash
+npm run build
+php artisan serve
+```
+
+The application will be available at `http://127.0.0.1:8000`.
+
+---
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Recipe Management is open-sourced software licensed under the [MIT license].
