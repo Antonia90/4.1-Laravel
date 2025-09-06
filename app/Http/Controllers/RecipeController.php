@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -11,8 +10,11 @@ use App\Models\User;
 
 class RecipeController extends Controller
 {
-    
-
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+        $this->authorizeResource(\App\Models\Recipe::class, 'recipe');
+    }
 
     /**
      * Display a listing of the resource.
@@ -83,32 +85,28 @@ class RecipeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Recipe $recipe)
     {
-        $recipe = Recipe::with('ingredients')->findOrFail($id);
-
+        $recipe->load('ingredients');
         return view('recipes.show', compact('recipe'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Recipe $recipe)
     {
-        $recipe = Recipe::with('ingredients')->findOrFail($id);
         $ingredients = Ingredient::all();
         $categories = Recipe::getDietCategories();
-
         return view('recipes.edit', compact('recipe', 'ingredients', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Recipe $recipe)
     {
-        $recipe = Recipe::findOrFail($id);
-
+   
         $validated = $request->validate([
             'diet_category' => 'required|in:' . implode(',', Recipe::getDietCategories()),
             'name' => 'required|string|unique:recipes,name,' . $recipe->id,
@@ -140,11 +138,9 @@ class RecipeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Recipe $recipe)
     {
-        $recipe = Recipe::findOrFail($id);
-
-        $recipe->ingredients()->detach();
+         $recipe->ingredients()->detach();
         $recipe->delete();
 
         return redirect()->route('recipes.index')
