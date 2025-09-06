@@ -36,7 +36,7 @@ class RecipePolicy
     // Crear: cualquier usuario autenticado con rol 'user' o 'admin' (admin ya pasa por before)
     public function create(User $user): bool
     {
-        return $user->hasRole('user') || $user->hasRole('admin');
+       return $user->hasRole('user') || $user->hasRole('admin');
     }
 
     // Actualizar: solo el dueño (user_id === user->id). Admin ya pasó por before.

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ingredients', function (Blueprint $table) {
             $table->id();
-            $table->enum('ingredient_type', ['vegetable', 'fruit', 'protein', 'dairy', 'spice', 'other'])->default('other');
+            $table->enum('ingredient_type', ['verdura', 'fruta', 'proteina', 'lacteo', 'condimento', 'otro'])->default('otro');
             $table->string('name')->unique();
             $table->timestamps();
         });

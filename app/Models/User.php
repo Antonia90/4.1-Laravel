@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+//use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -13,8 +13,8 @@ class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, HasRoles;
-    
 
+    protected $guard_name = 'web';
     /**
      * The attributes that are mass assignable.
      *
@@ -48,8 +48,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-        public function recipes()
+    public function recipes()
     {
-       return $this->hasMany(Recipe::class);
+        return $this->hasMany(Recipe::class);
     }
 }

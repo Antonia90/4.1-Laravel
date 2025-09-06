@@ -27,9 +27,9 @@ class Recipe extends Model
     public static function getDietCategories()
     {
         return [
-            'vegan',
-            'vegetarian',
-            'omnivore',
+            'vegana',
+            'vegetariana',
+            'omnivora',
         ];
     }
     public function user()

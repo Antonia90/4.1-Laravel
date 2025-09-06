@@ -5,15 +5,17 @@ use Illuminate\Http\Request;
 use App\Models\Recipe;
 use App\Models\Ingredient;
 use App\Models\RecipeIngredient;
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 class RecipeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show']);
-        $this->authorizeResource(\App\Models\Recipe::class, 'recipe');
+                $this->middleware('auth'); // Solo necesitamos verificar que esté autenticado
+        
+        // Definimos los middleware específicos para cada acción
+        $this->middleware('can:update,recipe')->only(['edit', 'update']);
+        $this->middleware('can:delete,recipe')->only(['destroy']);
     }
 
     /**
@@ -60,12 +62,9 @@ class RecipeController extends Controller
             'ingredients.*.quantity_per_serving' => 'required|numeric|min:0',
         ]);
 
-        $recipe = Auth::user()->recipes()->create([
-            'diet_category' => $validated['diet_category'],
-            'name' => $validated['name'],
-            'description' => $validated['description'] ?? null,
-            'base_servings' => $validated['base_servings'],
-        ]);
+        
+        $recipe = auth()->user()->recipes()->create($validated);
+
 
 
 

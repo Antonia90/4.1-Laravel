@@ -12,7 +12,7 @@ class Ingredient extends Model
     protected $fillable = ['ingredient_type', 'name'];
 
     // Lista blanca para validar tipos
-    public const TYPES = ['vegetable', 'fruit', 'protein', 'dairy', 'spice', 'other'];
+    public const TYPES = ['verdura', 'fruta', 'proteina', 'lacteo', 'condimento', 'otro'];
 
     // Scopes para filtros
     public function scopeType($q, ?string $type)

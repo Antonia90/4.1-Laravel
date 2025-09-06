@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 @php
-    $units = ['g','kg','ml','l','cup','tbsp','tsp','unit'];
+    $units = ['g','kg','ml','l','taza','cucharada','unidad'];
 @endphp
 
 <div class="bg-white rounded-2xl shadow p-6">

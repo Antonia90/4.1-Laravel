@@ -16,5 +16,5 @@ class RecipeIngredient extends Pivot
     ];
 
     // Opcional: lista blanca de unidades para validar formularios
-    public const UNITS = ['g', 'kg', 'ml', 'l', 'cup', 'tbsp', 'tsp', 'unit'];
+    public const UNITS = ['g', 'kg', 'ml', 'l', 'taza', 'cucharada', 'unidad'];
 }

@@ -1,6 +1,7 @@
 {{-- resources/views/welcome.blade.php --}}
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,14 +14,15 @@
     <link rel="icon" type="image/png" href="{{ Vite::asset('resources/images/icon.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body class="relative bg-red-50 min-h-screen font-sans text-gray-800">
     <!-- Fondo -->
     <div class="absolute inset-0 bg-cover bg-center opacity-50 -z-10 overflow-hidden">
         <img src="{{ Vite::asset('resources/images/fondo.png') }}"
-             alt="Fondo"
-             class="w-full h-full object-cover">
+            alt="Fondo"
+            class="w-full h-full object-cover">
     </div>
-        <nav class="bg-red-300 p-4 shadow-md">
+    <nav class="bg-red-300 p-4 shadow-md">
         <div class="max-w-5xl mx-auto flex justify-between items-center">
             <a href="{{ url('/') }}"><img src="{{ Vite::asset('resources/images/icon.png') }}"
                     alt="Recetario"
@@ -44,10 +46,14 @@
             <p class="mt-16 text-lg">Organiza tus recetas e ingredientes de manera fácil.</p>
 
             <div class="mt-16 flex justify-center gap-4">
-                <a href="{{ route('register') }}" class="bg-orange-300 hover:bg-orange-200 text-gray-800 py-2 px-3 rounded-lg shadow-lg">Crear cuenta</a>
-                <a href="{{ route('login') }}" class="bg-orange-300 hover:bg-orange-200 text-gray-800 py-2 px-3 rounded-lg shadow-lg">Iniciar sesión</a>
+                <a href="{{ route('register') }}" class="bg-red-400 hover:bg-red-300 text-gray-800 py-2 px-3 rounded-lg shadow-lg">Crear cuenta</a>
+                <a href="{{ route('login') }}" class="bg-red-400 hover:bg-red-300 text-gray-800 py-2 px-3 rounded-lg shadow-lg">Iniciar sesión</a>
             </div>
         </div>
     </div>
+    <footer class="bg-red-300 p-4 shadow-md">
+        <div class="max-w-5xl mx-auto flex justify-center items-center"> @2025. Todos los derechos reservados.</div>
+    </footer>
 </body>
+
 </html>

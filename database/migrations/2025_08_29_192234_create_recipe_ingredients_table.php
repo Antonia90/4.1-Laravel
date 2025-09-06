@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('recipe_ingredients', function (Blueprint $table) {
             $table->unsignedBigInteger('recipe_id');
             $table->unsignedBigInteger('ingredient_id');
-            $table->enum('unit', ['g', 'kg', 'ml', 'l', 'cup', 'tbsp', 'tsp', 'unit'])->default('g');
+            $table->enum('unit', ['g', 'kg', 'ml', 'l', 'taza', 'cucharada', 'unidad'])->default('g');
             $table->decimal('quantity_per_serving', 8, 2)->default(0); // cantidad para 1 porción base
             // composite primary (opcional)
             $table->primary(['recipe_id', 'ingredient_id']);
