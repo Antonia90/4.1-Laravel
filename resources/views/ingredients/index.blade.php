@@ -6,8 +6,11 @@
     </x-slot>
 <div class="bg-white rounded-2xl shadow p-6">
     <x-validation-errors />
-    <div class="flex items-center justify-between mb-4">
-        <h2 class="text-2xl font-semibold text-pink-700 uppercase"></h2>
+    <div class="flex items-center justify-end mb-4 gap-8">
+                    <a href="{{ route('dashboard') }}"
+                class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-xl shadow">
+                Volver
+            </a>
         <a href="{{ route('ingredients.create') }}"
             class="bg-orange-200 hover:bg-orange-300 text-gray-800 px-4 py-2 rounded-xl shadow">
             + Agregar
