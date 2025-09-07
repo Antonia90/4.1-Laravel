@@ -6,13 +6,13 @@
     </x-slot>
     <div class="flex justify-center">
 
-        <div class="bg-white rounded-xl shadow-md p-6">
+        <div class="bg-white rounded-xl shadow-md p-6 w-auto">
             <x-validation-errors />
             <h1 class="text-2xl font-bold text-pink-700 mb-4 uppercase">{{ $recipe->name }}</h1>
 
             <p class="mb-2"><strong>Categoría:</strong> {{ ucfirst($recipe->diet_category) }}</p>
             <p class="mb-2"><strong>Porciones base:</strong> {{ $recipe->base_servings }}</p>
-            <p class="mb-4"><strong>Paso a paso:</strong> {{ $recipe->description }}</p>
+            <p class="mb-4 w-2/3"><strong>Paso a paso:</strong> </br> {{ $recipe->description }}</p>
 
             <h2 class="text-xl font-semibold text-pink-600 mb-2">Ingredientes</h2>
             <ul class="list-disc pl-5">
