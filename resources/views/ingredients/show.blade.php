@@ -7,6 +7,7 @@
     <div class="flex justify-center">
 
         <div class="bg-white rounded-xl shadow-md p-6">
+            <x-validation-errors />
             <h1 class="text-2xl font-bold text-pink-700 mb-4 text-center">{{ $ingredient->name }}</h1>
 
             <p class="mb-2 uppercase">
