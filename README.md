@@ -1,4 +1,4 @@
-<p align="center">RECIPES</p>
+# RECIPES
 
 ## Recipe Management
 
@@ -18,10 +18,10 @@ This structure ensures that each part of the application has a single, well-defi
 
 ## Technologies Used
 
--Backend: [Laravel 11, PHP 8.2]
--Frontend: [Tailwind CSS, Alpine.js]
--Database: [MySQL]
--Development Tools: [Vite, Composer, NPM]
+- Backend: [Laravel 11, PHP 8.2]
+- Frontend: [Tailwind CSS, Alpine.js]
+- Database: [MySQL]
+- Development Tools: [Vite, Composer, NPM]
 
 ## Installation and Setup
 
@@ -29,10 +29,11 @@ Follow these steps to get the project up and running on your local machine.
 
 ### Prerequisites
 
-- PHP >= 8.2
-- Composer
-- Node.js & NPM
-- A database server
+- [PHP ^8.2](https://www.php.net/downloads.php)
+- [Composer](https://getcomposer.org/)
+- [MySQL o MariaDB](https://www.mysql.com/)
+- [Node.js y NPM](https://nodejs.org/)
+- [Git](https://git-scm.com/)
 
 ### 1. Clone the Repository
 
