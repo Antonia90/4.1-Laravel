@@ -5,6 +5,7 @@
         </h2>
     </x-slot>
 <div class="bg-white rounded-2xl shadow p-6">
+    <x-validation-errors />
     <h2 class="text-2xl font-semibold text-pink-700 mb-4 uppercase">Nuevo Ingrediente</h2>
 
     <form action="{{ route('ingredients.store') }}" method="POST" class="space-y-4">

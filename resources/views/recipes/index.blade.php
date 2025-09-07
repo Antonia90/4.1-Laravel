@@ -5,6 +5,7 @@
         </h2>
     </x-slot>
     <div class="bg-white rounded-2xl shadow p-6">
+        <x-validation-errors />
         <div class="flex items-center justify-between mb-4">
             <h2 class="text-2xl font-semibold text-pink-700 uppercase"></h2>
             <a href="{{ route('recipes.create') }}"

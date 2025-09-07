@@ -9,7 +9,7 @@
 @endphp
 
 <div class="bg-white rounded-2xl shadow p-6">
-    <!-- <h2 class="text-2xl font-semibold text-pink-700 mb-4 uppercase">Editar</h2> -->
+    <x-validation-errors />
 
     <form action="{{ route('recipes.update', $recipe) }}" method="POST" class="space-y-4">
         @csrf

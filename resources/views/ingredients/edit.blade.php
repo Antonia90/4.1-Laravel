@@ -7,6 +7,7 @@
     <div class="flex justify-center">
 
         <div class="bg-white rounded-2xl shadow p-6">
+            <x-validation-errors />
             <h2 class="text-2xl font-semibold text-pink-700 mb-4 uppercase"></h2>
 
             <form action="{{ route('ingredients.update', $ingredient) }}" method="POST" class="space-y-4">
