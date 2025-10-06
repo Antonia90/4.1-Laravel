@@ -83,7 +83,7 @@ php artisan storage:link
 Finally, build the frontend assets and start the local development server.
 
 ```bash
-npm run build
+npm run dev
 php artisan serve
 ```
 
