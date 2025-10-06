@@ -8,11 +8,10 @@ class CreateDefaultRolesSeeder extends Seeder
 {
     public function run()
     {
-        // Crear roles predeterminados
         $roles = ['user', 'admin'];
         
         foreach ($roles as $roleName) {
-            Role::create([
+            Role::firstOrCreate([
                 'name' => $roleName,
                 'guard_name' => 'web'
             ]);

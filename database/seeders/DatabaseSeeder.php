@@ -13,11 +13,26 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $this->call(CreateDefaultRolesSeeder::class);
 
-        User::factory()->create([
+        // Usuario común
+        $user = User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+            'password' => bcrypt('password'),
+        ]);
+        $user->assignRole('user');
+
+        // Usuario admin
+        $admin = User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@example.com',
+            'password' => bcrypt('admin123'),
+        ]);
+        $admin->assignRole('admin');
+        $this->call([
+            IngredientSeeder::class,
+            RecipeSeeder::class,
         ]);
     }
 }
